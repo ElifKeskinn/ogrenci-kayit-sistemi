@@ -11,7 +11,8 @@ export default function adim1(){
         birthDate: "",
         tcno: "",
         phone: "",
-        gender: ""
+        gender: "",
+        step : 1
           });
 
     const [formState, setFormState] = useState({});
