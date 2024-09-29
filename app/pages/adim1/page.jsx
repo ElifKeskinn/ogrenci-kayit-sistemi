@@ -31,26 +31,32 @@ export default function adim1(){
 return ( 
     <div>
     <h1>Öğrenci Kayıt - Adım 1</h1>
-    <form>
+    <form onSubmit={handleSubmit}>
       <p>
         <label>İsim:</label>
-        <input type="text" name="name"  />
+        <input type="text" name="name" onChange={handleChange} />
+        {formState?.errors?.name && (<small> {formState?.errors?.name} </small>)}
+
       </p>
       <p>
         <label>Soyisim:</label>
         <input type="text" name="surname"  />
+        {formState?.errors?.surname && (<small> {formState?.errors?.surname} </small>)}
       </p>
       <p>
         <label>Doğum Tarihi:</label>
         <input type="date" name="birthDate"  />
+        {formState?.errors?.birthDate && (<small> {formState?.errors?.birthDate} </small>)}
       </p>
       <p>
         <label>TC No:</label>
         <input type="number" name="tcno"  />
+        {formState?.errors?.tcno && (<small> {formState?.errors?.tcno} </small>)}
       </p>
       <p>
         <label>Telefon:</label>
         <input type="number" name="phone"  />
+        {formState?.errors?.phone && (<small> {formState?.errors?.phone} </small>)}
       </p>
       <p>
         <label>Cinsiyet:</label>
@@ -61,9 +67,20 @@ return (
           <option value="other">Diğer(atak helikopteri?)</option>
         </select>
       </p>
-      <a href="/pages/adim2">sonraki sayfa</a> 
-
+      <button type="submit">Formu Kontrol Et</button>
     </form>
+
+    {!Object.keys(formState.errors || {}).length && (
+        <Link
+          href={{
+            pathname: '/pages/adim2',
+            query: formData,
+          }}
+        >
+          <button>Sonraki Sayfa</button>
+        </Link>
+      )}
+
   </div>
 );
 }
