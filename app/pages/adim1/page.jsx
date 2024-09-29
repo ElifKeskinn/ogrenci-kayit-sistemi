@@ -37,7 +37,7 @@ return (
           <option value="other">Diğer(atak helikopteri?)</option>
         </select>
       </p>
-      <a href="/">sonraki sayfa</a> {/*şimdilik önceki sayfaya aktardım */}
+      <a href="/pages/adim2">sonraki sayfa</a> {/*şimdilik önceki sayfaya aktardım */}
 
     </form>
   </div>
