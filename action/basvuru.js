@@ -1,59 +1,43 @@
-"use server"
+"use server";
 
-export async function BasvuruYapAksiyonu(prevState, values){
-    // const formObj = Object.fromEntries(formData);
-    // console.log(formObj);
+export async function BasvuruYapAksiyonu(prevState, values) {
+  let errors = {};
+  
+  // Adım 1 
+  if (values.step == 1) {
+    errors = {
+      name: !values.name && "İsim boş olamaz",
+      surname: !values.surname && "Soyad boş olamaz",
+      phone: !values.phone && "Telefon alanı boş olamaz",
+      tcno: !values.tcno && "TCNO alanı boş olamaz"
+    };
+  }
+  
+  // Adım 2 
+  if (values.step == 2) {
+    errors = {
+      examScore: !values.examScore && "Sınav puanı boş olamaz",
+      interviewScore: !values.interviewScore && "Mülakat puanı boş olamaz",
+      interviewPassed: !values.interviewPassed && "Mülakat sonucu seçilmelidir"
+    };
+  }
 
-    // const errors = {}
+  // Adım 3 
+  if (values.step == 3) {
+    errors = {
+      term: !values.term && "Dönem boş olamaz",
+      teacher: !values.teacher && "Eğitmen boş olamaz",
+      department: !values.department && "Bölüm boş olamaz",
+      studentNumber: !values.studentNumber && "Öğrenci numarası boş olamaz"
+    };
+  }
 
-    
+  // Adım 4 
+  if (values.step == 4) {
+    errors = {
+      certificate: !values.certificate && "Sertifika durumu belirtilmelidir"
+    };
+  }
 
-    // if(!formObj.name){
-    //     errors.name = "İsim boş olamaz"
-    // }
-
-    // if(!formObj.surname){
-    //     errors.surname = "Soyad boş olamaz"
-    // }
-    
-    // return {errors}
-
-
-    // const response = await fetch("localhost:3000/basvurular/ekle", {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-type": "application/json"
-    //     },
-    //     body: JSON.stringify(formObj)
-    // })
-
-    // const fields = [
-    //     { key: "name", message: "İsim boş olamaz" },
-    //     { key: "surname", message: "Soyad boş olamaz" }
-    // ];
-    
-    // const errors = {};
-    
-    // fields.forEach(field => {
-    //     if (!formObj[field.key]) {
-    //         errors[field.key] = field.message;
-    //     }
-    // });
-    
-    // return { errors };
-    
-    let errors = {}
-    if(values.step == 1){
-        errors = {
-            name: !values.name && "İsim boş olamaz",
-            surname: !values.surname && "Soyad boş olamaz",
-            phone: !values.phone && "Telefon alanı boş olamaz",
-            tcno: !values.tcno && "TCNO alanı boş olamaz"
-        };
-    }
-      
-    return { errors };
-    
+  return { errors };
 }
-
-
