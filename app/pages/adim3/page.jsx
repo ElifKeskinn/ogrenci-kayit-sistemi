@@ -24,7 +24,7 @@ export default function adim3(){
             <label>Öğrenci Numarası:</label>
             <input type="number" name="studentNumber" />
           </p>
-          <a href="/pages/adim2">sonraki sayfa</a> 
+          <a href="/pages/adim4">sonraki sayfa</a> 
         </form>
       </div>
     );
