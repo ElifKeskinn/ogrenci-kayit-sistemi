@@ -35,7 +35,7 @@ export default function adim4() {
                     <input type="radio" name="certificate" value="yes" /> Evet
                     <input type="radio" name="certificate" value="no" /> Hayır
                 </p>
-                <Link href="/">
+                <Link href="/pages/sonuc">
                     <button type="button" >
                         Tamamla
                     </button>
