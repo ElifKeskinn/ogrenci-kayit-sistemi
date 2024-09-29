@@ -1,8 +1,32 @@
-//'use client';
+'use client';
+import { useState } from 'react';
+import Link from 'next/link';
+import { BasvuruYapAksiyonu } from '../../../action/basvuru';
 
 export default function adim1(){
     
+    const [formData, setFormData] = useState({
+        name: "",
+        surname: "",
+        birthDate: "",
+        tcno: "",
+        phone: "",
+        gender: ""
+          });
 
+    const [formState, setFormState] = useState({});
+
+    const handleChange = (e) => {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      const result = await BasvuruYapAksiyonu(null, formData);
+      if (Object.keys(result.errors).length) {
+        setFormState({ errors: result.errors });
+      }
+    };
 
 return ( 
     <div>
