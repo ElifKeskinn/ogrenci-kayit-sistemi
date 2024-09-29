@@ -23,7 +23,7 @@ export default function adim2(){
               <input type="radio" name="interviewPassed" value="yes" /> Evet
               <input type="radio" name="interviewPassed" value="no" /> Hayır
             </p>
-            <a href="/pages/adim1">önceki sayfa {/*şimdilik */}</a>
+            <a href="/pages/adim3">sonraki sayfa </a>
           </form>
         </div>
       );
