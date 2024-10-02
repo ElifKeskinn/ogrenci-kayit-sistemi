@@ -41,3 +41,15 @@ export async function BasvuruYapAksiyonu(prevState, values) {
 
   return { errors };
 }
+
+
+/*
+
+portfolio sitesi next.js ile yapılsın
+cv yeni sekmede açılsın indirilmesin
+quiz app next.js ile yapılacak
+supabase.comdan kendine bir hesap aç
+supabase nasıl kullanılır öğren
+
+
+*/
