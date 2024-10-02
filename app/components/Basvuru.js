@@ -83,16 +83,16 @@ export default function Basvuru() {
     };
 
     return (
-        <div>
-            <h1>Başvuru Sayfası</h1>
-            <form onSubmit={step === 5 ? handleSubmit : handleNext}>
+        <div className="form-container">
+            <h1 className="form-title">Başvuru Sayfası</h1>
+            <form className="form" onSubmit={step === 5 ? handleSubmit : handleNext}>
                 <input type="hidden" name="step" value={step} />
-
+    
                 {step === 1 && (
-                    <div>
-                        <h2>Adım 1: Kişisel Bilgiler</h2>
-                        <div>
-                            <label htmlFor="name">İsim:</label>
+                    <div className="form-step">
+                        <h2 className="step-title">Adım 1: Kişisel Bilgiler</h2>
+                        <div className="form-group">
+                            <label htmlFor="name" className="form-label">İsim:</label>
                             <input
                                 type="text"
                                 name="name"
@@ -100,11 +100,12 @@ export default function Basvuru() {
                                 placeholder="Adınız"
                                 value={formData.name}
                                 onChange={handleChange}
+                                className="form-input"
                             />
-                            {errors.name && <small style={{ color: "red" }}>{errors.name}</small>}
+                            {errors.name && <small className="form-error">{errors.name}</small>}
                         </div>
-                        <div>
-                            <label htmlFor="surname">Soyad:</label>
+                        <div className="form-group">
+                            <label htmlFor="surname" className="form-label">Soyad:</label>
                             <input
                                 type="text"
                                 name="surname"
@@ -112,11 +113,12 @@ export default function Basvuru() {
                                 placeholder="Soyadınız"
                                 value={formData.surname}
                                 onChange={handleChange}
+                                className="form-input"
                             />
-                            {errors.surname && <small style={{ color: "red" }}>{errors.surname}</small>}
+                            {errors.surname && <small className="form-error">{errors.surname}</small>}
                         </div>
-                        <div>
-                            <label htmlFor="phone">Telefon:</label>
+                        <div className="form-group">
+                            <label htmlFor="phone" className="form-label">Telefon:</label>
                             <input
                                 type="number"
                                 name="phone"
@@ -124,11 +126,12 @@ export default function Basvuru() {
                                 placeholder="Telefon Numaranız"
                                 value={formData.phone}
                                 onChange={handleChange}
+                                className="form-input"
                             />
-                            {errors.phone && <small style={{ color: "red" }}>{errors.phone}</small>}
+                            {errors.phone && <small className="form-error">{errors.phone}</small>}
                         </div>
-                        <div>
-                            <label htmlFor="tcno">TC No:</label>
+                        <div className="form-group">
+                            <label htmlFor="tcno" className="form-label">TC No:</label>
                             <input
                                 type="number"
                                 name="tcno"
@@ -136,63 +139,74 @@ export default function Basvuru() {
                                 placeholder="TC Numaranız"
                                 value={formData.tcno}
                                 onChange={handleChange}
+                                className="form-input"
                             />
-                            {errors.tcno && <small style={{ color: "red" }}>{errors.tcno}</small>}
+                            {errors.tcno && <small className="form-error">{errors.tcno}</small>}
                         </div>
-                        <div>
-                            <label htmlFor="dogumTarihi">Doğum Tarihi:</label>
+                        <div className="form-group">
+                            <label htmlFor="dogumTarihi" className="form-label">Doğum Tarihi:</label>
                             <input
                                 type="date"
                                 name="dogumTarihi"
                                 id="dogumTarihi"
                                 value={formData.dogumTarihi}
                                 onChange={handleChange}
+                                className="form-input"
                             />
                             {errors.dogumTarihi && (
-                                <small style={{ color: "red" }}>{errors.dogumTarihi}</small>
+                                <small className="form-error">{errors.dogumTarihi}</small>
                             )}
                         </div>
-                        <div>
-                            <span>Cinsiyet:</span>
-                            <div>
-                                <input
-                                    type="radio"
-                                    id="female"
-                                    name="gender"
-                                    value="female" 
-                                    checked={formData.gender === "female"}
-                                    onChange={handleChange}
-                                />
-                                <label htmlFor="female">Kadın</label>
-                                <input
-                                    type="radio"
-                                    id="male"
-                                    name="gender"
-                                    value="male" 
-                                    checked={formData.gender === "male"}
-                                    onChange={handleChange}
-                                />
-                                <label htmlFor="male">Erkek</label>
-                                <input
-                                    type="radio"
-                                    id="other"
-                                    name="gender"
-                                    value="other" 
-                                    checked={formData.gender === "other"}
-                                    onChange={handleChange}
-                                />
-                                <label htmlFor="other">Diğer</label>
+                        <div className="form-group">
+                            <span className="form-label">Cinsiyet:</span>
+                            <div className="radio-group">
+                                <div className="radio-option">
+                                    <input
+                                        type="radio"
+                                        id="female"
+                                        name="gender"
+                                        value="female"
+                                        checked={formData.gender === "female"}
+                                        onChange={handleChange}
+                                        className="form-radio"
+                                    />
+                                    <label htmlFor="female" className="form-radio-label">Kadın</label>
+                                </div>
+                                <div className="radio-option">
+                                    <input
+                                        type="radio"
+                                        id="male"
+                                        name="gender"
+                                        value="male"
+                                        checked={formData.gender === "male"}
+                                        onChange={handleChange}
+                                        className="form-radio"
+                                    />
+                                    <label htmlFor="male" className="form-radio-label">Erkek</label>
+                                </div>
+                                <div className="radio-option">
+                                    <input
+                                        type="radio"
+                                        id="other"
+                                        name="gender"
+                                        value="other"
+                                        checked={formData.gender === "other"}
+                                        onChange={handleChange}
+                                        className="form-radio"
+                                    />
+                                    <label htmlFor="other" className="form-radio-label">Diğer</label>
+                                </div>
                             </div>
-                            {errors.gender && <small style={{ color: "red" }}>{errors.gender}</small>}
+                            {errors.gender && <small className="form-error">{errors.gender}</small>}
                         </div>
                     </div>
                 )}
-
+    
                 {step === 2 && (
-                    <div>
-                        <h2>Adım 2: Mülakat Bilgileri</h2>
-                        <div>
-                            <label htmlFor="examScore">Ön Sınav Puanı:</label>
+                    <div className="form-step">
+                        <h2 className="step-title">Adım 2: Mülakat Bilgileri</h2>
+                        <div className="form-group">
+                            <label htmlFor="examScore" className="form-label">Ön Sınav Puanı:</label>
                             <input
                                 type="number"
                                 step="0.01"
@@ -201,24 +215,26 @@ export default function Basvuru() {
                                 placeholder="Ön Sınav Puanınız"
                                 value={formData.examScore}
                                 onChange={handleChange}
+                                className="form-input"
                             />
-                            {errors.examScore && <small style={{ color: "red" }}>{errors.examScore}</small>}
+                            {errors.examScore && <small className="form-error">{errors.examScore}</small>}
                         </div>
-                        <div>
-                            <label htmlFor="interviewNotes">Mülakat Notları:</label>
+                        <div className="form-group">
+                            <label htmlFor="interviewNotes" className="form-label">Mülakat Notları:</label>
                             <textarea
                                 name="interviewNotes"
                                 id="interviewNotes"
                                 placeholder="Mülakat Notlarınız"
                                 value={formData.interviewNotes}
                                 onChange={handleChange}
+                                className="form-textarea"
                             ></textarea>
                             {errors.interviewNotes && (
-                                <small style={{ color: "red" }}>{errors.interviewNotes}</small>
+                                <small className="form-error">{errors.interviewNotes}</small>
                             )}
                         </div>
-                        <div>
-                            <label htmlFor="interviewScore">Mülakat Puanı:</label>
+                        <div className="form-group">
+                            <label htmlFor="interviewScore" className="form-label">Mülakat Puanı:</label>
                             <input
                                 type="number"
                                 name="interviewScore"
@@ -226,45 +242,52 @@ export default function Basvuru() {
                                 placeholder="Mülakat Puanınız"
                                 value={formData.interviewScore}
                                 onChange={handleChange}
+                                className="form-input"
                             />
                             {errors.interviewScore && (
-                                <small style={{ color: "red" }}>{errors.interviewScore}</small>
+                                <small className="form-error">{errors.interviewScore}</small>
                             )}
                         </div>
-                        <div>
-                            <span>Mülakattan Geçti mi?</span>
-                            <div>
-                                <input
-                                    type="radio"
-                                    id="evet"
-                                    name="interviewPassed"
-                                    value="evet" 
-                                    checked={formData.interviewPassed === "evet"}
-                                    onChange={handleChange}
-                                />
-                                <label htmlFor="evet">Evet</label>
-                                <input
-                                    type="radio"
-                                    id="hayır"
-                                    name="interviewPassed"
-                                    value="hayır" 
-                                    checked={formData.interviewPassed === "hayır"}
-                                    onChange={handleChange}
-                                />
-                                <label htmlFor="hayır">Hayır</label>
+                        <div className="form-group">
+                            <span className="form-label">Mülakattan Geçti mi?</span>
+                            <div className="radio-group">
+                                <div className="radio-option">
+                                    <input
+                                        type="radio"
+                                        id="evet"
+                                        name="interviewPassed"
+                                        value="evet"
+                                        checked={formData.interviewPassed === "evet"}
+                                        onChange={handleChange}
+                                        className="form-radio"
+                                    />
+                                    <label htmlFor="evet" className="form-radio-label">Evet</label>
+                                </div>
+                                <div className="radio-option">
+                                    <input
+                                        type="radio"
+                                        id="hayır"
+                                        name="interviewPassed"
+                                        value="hayır"
+                                        checked={formData.interviewPassed === "hayır"}
+                                        onChange={handleChange}
+                                        className="form-radio"
+                                    />
+                                    <label htmlFor="hayır" className="form-radio-label">Hayır</label>
+                                </div>
                             </div>
                             {errors.interviewPassed && (
-                                <small style={{ color: "red" }}>{errors.interviewPassed}</small>
+                                <small className="form-error">{errors.interviewPassed}</small>
                             )}
                         </div>
                     </div>
                 )}
-
+    
                 {step === 3 && (
-                    <div>
-                        <h2>Adım 3: Eğitim Bilgileri</h2>
-                        <div>
-                            <label htmlFor="term">Dönem:</label>
+                    <div className="form-step">
+                        <h2 className="step-title">Adım 3: Eğitim Bilgileri</h2>
+                        <div className="form-group">
+                            <label htmlFor="term" className="form-label">Dönem:</label>
                             <input
                                 type="text"
                                 name="term"
@@ -272,11 +295,12 @@ export default function Basvuru() {
                                 placeholder="Dönem"
                                 value={formData.term}
                                 onChange={handleChange}
+                                className="form-input"
                             />
-                            {errors.term && <small style={{ color: "red" }}>{errors.term}</small>}
+                            {errors.term && <small className="form-error">{errors.term}</small>}
                         </div>
-                        <div>
-                            <label htmlFor="teacher">Eğitmen:</label>
+                        <div className="form-group">
+                            <label htmlFor="teacher" className="form-label">Eğitmen:</label>
                             <input
                                 type="text"
                                 name="teacher"
@@ -284,11 +308,12 @@ export default function Basvuru() {
                                 placeholder="Eğitmen Adı"
                                 value={formData.teacher}
                                 onChange={handleChange}
+                                className="form-input"
                             />
-                            {errors.teacher && <small style={{ color: "red" }}>{errors.teacher}</small>}
+                            {errors.teacher && <small className="form-error">{errors.teacher}</small>}
                         </div>
-                        <div>
-                            <label htmlFor="department">Bölüm:</label>
+                        <div className="form-group">
+                            <label htmlFor="department" className="form-label">Bölüm:</label>
                             <input
                                 type="text"
                                 name="department"
@@ -296,13 +321,14 @@ export default function Basvuru() {
                                 placeholder="Bölümünüz"
                                 value={formData.department}
                                 onChange={handleChange}
+                                className="form-input"
                             />
                             {errors.department && (
-                                <small style={{ color: "red" }}>{errors.department}</small>
+                                <small className="form-error">{errors.department}</small>
                             )}
                         </div>
-                        <div>
-                            <label htmlFor="studentNumber">Öğrenci Numarası:</label>
+                        <div className="form-group">
+                            <label htmlFor="studentNumber" className="form-label">Öğrenci Numarası:</label>
                             <input
                                 type="text"
                                 name="studentNumber"
@@ -310,216 +336,259 @@ export default function Basvuru() {
                                 placeholder="Öğrenci Numaranız"
                                 value={formData.studentNumber}
                                 onChange={handleChange}
+                                className="form-input"
                             />
                             {errors.studentNumber && (
-                                <small style={{ color: "red" }}>{errors.studentNumber}</small>
+                                <small className="form-error">{errors.studentNumber}</small>
                             )}
                         </div>
                     </div>
                 )}
-
-                {step === 4 && (
-                    <div>
-                        <h2>Adım 4: Değerlendirme</h2>
-                        <div>
-                            <span>Ödevlerin tamamını tamamladı mı?</span>
-                            <div>
+    
+               
+            {step === 4 && (
+                <div className="form-step">
+                    <h2 className="step-title">Adım 4: Değerlendirme</h2>
+                    <div className="form-group">
+                        <span className="form-label">Ödevlerin tamamını tamamladı mı?</span>
+                        <div className="radio-group">
+                            <div className="radio-option">
                                 <input
                                     type="radio"
                                     id="homeworkEvet"
                                     name="homeworkCompleted"
-                                    value="evet" 
+                                    value="evet"
                                     checked={formData.homeworkCompleted === "evet"}
                                     onChange={handleChange}
+                                    className="form-radio"
                                 />
-                                <label htmlFor="homeworkEvet">Evet</label>
+                                <label htmlFor="homeworkEvet" className="form-radio-label">Evet</label>
+                            </div>
+                            <div className="radio-option">
                                 <input
                                     type="radio"
                                     id="homeworkHayir"
                                     name="homeworkCompleted"
-                                    value="hayır" 
+                                    value="hayır"
                                     checked={formData.homeworkCompleted === "hayır"}
                                     onChange={handleChange}
+                                    className="form-radio"
                                 />
-                                <label htmlFor="homeworkHayir">Hayır</label>
+                                <label htmlFor="homeworkHayir" className="form-radio-label">Hayır</label>
                             </div>
-                            {errors.homeworkCompleted && (
-                                <small style={{ color: "red" }}>{errors.homeworkCompleted}</small>
-                            )}
                         </div>
+                        {errors.homeworkCompleted && (
+                            <small className="form-error">{errors.homeworkCompleted}</small>
+                        )}
+                    </div>
 
-                        <div>
-                            <span>Sınıfta derse katılım sağlandı mı?</span>
-                            <div>
+                    <div className="form-group">
+                        <span className="form-label">Sınıfta derse katılım sağlandı mı?</span>
+                        <div className="radio-group">
+                            <div className="radio-option">
                                 <input
                                     type="radio"
                                     id="participationEvet"
                                     name="classParticipation"
-                                    value="evet" 
+                                    value="evet"
                                     checked={formData.classParticipation === "evet"}
                                     onChange={handleChange}
+                                    className="form-radio"
                                 />
-                                <label htmlFor="participationEvet">Evet</label>
+                                <label htmlFor="participationEvet" className="form-radio-label">Evet</label>
+                            </div>
+                            <div className="radio-option">
                                 <input
                                     type="radio"
                                     id="participationHayir"
                                     name="classParticipation"
-                                    value="hayır" 
+                                    value="hayır"
                                     checked={formData.classParticipation === "hayır"}
                                     onChange={handleChange}
+                                    className="form-radio"
                                 />
-                                <label htmlFor="participationHayir">Hayır</label>
+                                <label htmlFor="participationHayir" className="form-radio-label">Hayır</label>
                             </div>
-                            {errors.classParticipation && (
-                                <small style={{ color: "red" }}>{errors.classParticipation}</small>
-                            )}
                         </div>
+                        {errors.classParticipation && (
+                            <small className="form-error">{errors.classParticipation}</small>
+                        )}
+                    </div>
 
-                        <div>
-                            <span>Eğitmenlere söylemediği halde proje geliştirdi mi?</span>
-                            <div>
+                    <div className="form-group">
+                        <span className="form-label">Eğitmenlere söylemediği halde proje geliştirdi mi?</span>
+                        <div className="radio-group">
+                            <div className="radio-option">
                                 <input
                                     type="radio"
                                     id="projectEvet"
                                     name="projectDeveloped"
-                                    value="evet" 
+                                    value="evet"
                                     checked={formData.projectDeveloped === "evet"}
                                     onChange={handleChange}
+                                    className="form-radio"
                                 />
-                                <label htmlFor="projectEvet">Evet</label>
+                                <label htmlFor="projectEvet" className="form-radio-label">Evet</label>
+                            </div>
+                            <div className="radio-option">
                                 <input
                                     type="radio"
                                     id="projectHayir"
                                     name="projectDeveloped"
-                                    value="hayır" 
+                                    value="hayır"
                                     checked={formData.projectDeveloped === "hayır"}
                                     onChange={handleChange}
+                                    className="form-radio"
                                 />
-                                <label htmlFor="projectHayir">Hayır</label>
+                                <label htmlFor="projectHayir" className="form-radio-label">Hayır</label>
                             </div>
-                            {errors.projectDeveloped && (
-                                <small style={{ color: "red" }}>{errors.projectDeveloped}</small>
-                            )}
                         </div>
+                        {errors.projectDeveloped && (
+                            <small className="form-error">{errors.projectDeveloped}</small>
+                        )}
+                    </div>
 
-                        <div>
-                            <span>Derse her zaman ders saatinde geldi mi?</span>
-                            <div>
+                    <div className="form-group">
+                        <span className="form-label">Derse her zaman ders saatinde geldi mi?</span>
+                        <div className="radio-group">
+                            <div className="radio-option">
                                 <input
                                     type="radio"
                                     id="ontimeEvet"
                                     name="alwaysOnTime"
-                                    value="evet" 
+                                    value="evet"
                                     checked={formData.alwaysOnTime === "evet"}
                                     onChange={handleChange}
+                                    className="form-radio"
                                 />
-                                <label htmlFor="ontimeEvet">Evet</label>
+                                <label htmlFor="ontimeEvet" className="form-radio-label">Evet</label>
+                            </div>
+                            <div className="radio-option">
                                 <input
                                     type="radio"
                                     id="ontimeHayir"
                                     name="alwaysOnTime"
-                                    value="hayır" 
+                                    value="hayır"
                                     checked={formData.alwaysOnTime === "hayır"}
                                     onChange={handleChange}
+                                    className="form-radio"
                                 />
-                                <label htmlFor="ontimeHayir">Hayır</label>
+                                <label htmlFor="ontimeHayir" className="form-radio-label">Hayır</label>
                             </div>
-                            {errors.alwaysOnTime && (
-                                <small style={{ color: "red" }}>{errors.alwaysOnTime}</small>
-                            )}
                         </div>
+                        {errors.alwaysOnTime && (
+                            <small className="form-error">{errors.alwaysOnTime}</small>
+                        )}
+                    </div>
 
-                        <div>
-                            <span>Ders esnasında sadece derse odaklandı mı?</span>
-                            <div>
+                    <div className="form-group">
+                        <span className="form-label">Ders esnasında sadece derse odaklandı mı?</span>
+                        <div className="radio-group">
+                            <div className="radio-option">
                                 <input
                                     type="radio"
                                     id="focusedEvet"
                                     name="focusedDuringClass"
-                                    value="evet" 
+                                    value="evet"
                                     checked={formData.focusedDuringClass === "evet"}
                                     onChange={handleChange}
+                                    className="form-radio"
                                 />
-                                <label htmlFor="focusedEvet">Evet</label>
+                                <label htmlFor="focusedEvet" className="form-radio-label">Evet</label>
+                            </div>
+                            <div className="radio-option">
                                 <input
                                     type="radio"
                                     id="focusedHayir"
                                     name="focusedDuringClass"
-                                    value="hayır" 
+                                    value="hayır"
                                     checked={formData.focusedDuringClass === "hayır"}
                                     onChange={handleChange}
+                                    className="form-radio"
                                 />
-                                <label htmlFor="focusedHayir">Hayır</label>
+                                <label htmlFor="focusedHayir" className="form-radio-label">Hayır</label>
                             </div>
-                            {errors.focusedDuringClass && (
-                                <small style={{ color: "red" }}>{errors.focusedDuringClass}</small>
-                            )}
                         </div>
+                        {errors.focusedDuringClass && (
+                            <small className="form-error">{errors.focusedDuringClass}</small>
+                        )}
+                    </div>
 
-                        <div>
-                            <span>Sertifika almayı hak ediyor mu?</span>
-                            <div>
+                    <div className="form-group">
+                        <span className="form-label">Sertifika almayı hak ediyor mu?</span>
+                        <div className="radio-group">
+                            <div className="radio-option">
                                 <input
                                     type="radio"
                                     id="certificateEvet"
                                     name="certificate"
-                                    value="evet" 
+                                    value="evet"
                                     checked={formData.certificate === "evet"}
                                     onChange={handleChange}
+                                    className="form-radio"
                                 />
-                                <label htmlFor="certificateEvet">Evet</label>
+                                <label htmlFor="certificateEvet" className="form-radio-label">Evet</label>
+                            </div>
+                            <div className="radio-option">
                                 <input
                                     type="radio"
                                     id="certificateHayir"
                                     name="certificate"
-                                    value="hayır" 
+                                    value="hayır"
                                     checked={formData.certificate === "hayır"}
                                     onChange={handleChange}
+                                    className="form-radio"
                                 />
-                                <label htmlFor="certificateHayir">Hayır</label>
+                                <label htmlFor="certificateHayir" className="form-radio-label">Hayır</label>
                             </div>
-                            {errors.certificate && (
-                                <small style={{ color: "red" }}>{errors.certificate}</small>
-                            )}
                         </div>
+                        {errors.certificate && (
+                            <small className="form-error">{errors.certificate}</small>
+                        )}
                     </div>
-                )}
-
+                </div>
+            )}
+    
                 {step === 5 && (
-                    <div>
-                        <h2>Başvuru Tamamlandı</h2>
-                        <p>
+                    <div className="form-step">
+                        <h2 className="step-title">Başvuru Tamamlandı</h2>
+                        <p className="completion-message">
                             Teşekkürler, {formData.name} {formData.surname}, başvurunuz başarıyla alındı.
                         </p>
                         {formData.certificate === "evet" ? (
                             <>
-                                <p>Sertifika almayı hak ediyorsunuz. Sertifikanız işleme alınacaktır.</p>
+                                <p className="completion-submessage">
+                                    Sertifika almayı hak ediyorsunuz. Sertifikanız işleme alınacaktır.
+                                </p>
                                 <a href="/" className="button">Başvuru Sayfasına Geri Dön</a>
                             </>
                         ) : (
                             <div>
-                                <p>Maalesef sertifika almayı hak etmediniz.</p>
+                                <p className="completion-submessage">
+                                    Maalesef sertifika almayı hak etmediniz.
+                                </p>
                                 <a href="/" className="button">Başvuru Sayfasına Geri Dön</a>
-
                             </div>
                         )}
                     </div>
                 )}
-
-                <div>
+    
+                <div className="form-navigation">
                     {step > 1 && step < 5 && (
-                        <button onClick={handleBack}>Geri</button>
+                        <button type="button" onClick={handleBack} className="button button-back">
+                            Geri
+                        </button>
                     )}
                     {step < 4 && (
-                        <button type="button" onClick={handleNext}>
+                        <button type="button" onClick={handleNext} className="button button-next">
                             İlerle
                         </button>
                     )}
                     {step === 4 && (
-                        <button type="submit">Tamamla</button>
+                        <button type="submit" className="button button-submit">Tamamla</button>
                     )}
                 </div>
             </form>
         </div>
     );
-}
+}    
